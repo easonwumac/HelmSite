@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Helm - Mobile Agent Console for AI Coding Sessions" />
+    <meta name="description" content="Helm - The Mobile Control Plane for AI Coding Sessions" />
     <title>Helm | Mobile Agent Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -11,86 +11,109 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body class="lang-en">
-    <div class="glow"></div>
+    <div class="glow-top"></div>
+    <div class="glow-bottom"></div>
     
-    <header class="header">
-      <div class="header__inner">
+    <header class="navbar">
+      <div class="navbar__inner">
         <div class="logo">
-          <span class="logo__icon">⎈</span>
-          <span class="logo__text">HELM</span>
+          <div class="logo__box">⎈</div>
+          <span class="logo__name">HELM</span>
         </div>
-        <nav class="header__nav">
-          <div class="lang-switch">
+        <div class="navbar__actions">
+          <div class="lang-toggle">
             <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
-            <span class="sep">/</span>
             <button onclick="setLang('tw')" id="btn-tw">中</button>
           </div>
-          <a href="https://github.com/easonwumac/Helm" class="github-link" target="_blank">
+          <a href="https://github.com/easonwumac/Helm" class="github-btn" target="_blank" aria-label="GitHub">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.11.81 2.235 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
-        </nav>
+        </div>
       </div>
     </header>
 
-    <main>
-      <section class="hero">
-        <h1 class="t-en">Coding shouldn't keep you<br><span class="highlight">chained to your desk.</span></h1>
-        <h1 class="t-tw">AI 開發不該把你<br><span class="highlight">鎖在桌子前面。</span></h1>
-        
-        <p class="hero__desc t-en">Helm is a mobile control plane for your AI coding sessions. Monitor progress, approve changes, and steer agents directly from your iPhone.</p>
-        <p class="hero__desc t-tw">Helm 是 AI 編碼階段的行動控制台。直接從 iPhone 監控進度、批准變更並引導 Agent 執行。</p>
-        
-        <div class="hero__actions">
-          <a href="https://github.com/easonwumac/Helm" class="btn btn--primary">Get Started</a>
-          <a href="#features" class="btn btn--text t-en">Learn More ↓</a>
-          <a href="#features" class="btn btn--text t-tw">了解更多 ↓</a>
+    <main class="content">
+      <section class="hero-section">
+        <div class="hero-text animate-up">
+          <h1 class="t-en">Coding shouldn't keep you<br><span class="gradient-text">chained to your desk.</span></h1>
+          <h1 class="t-tw">AI 開發不該把你<br><span class="gradient-text">鎖在電腦前面。</span></h1>
+          
+          <p class="hero-sub t-en">The mobile control plane for your AI coding sessions. Monitor progress, approve changes, and steer agents directly from your iPhone.</p>
+          <p class="hero-sub t-tw">AI 開發階段的行動控制台。直接從 iPhone 監控進度、批准變更，並引導 Agent 執行下一步。</p>
+          
+          <div class="hero-btns">
+            <a href="https://github.com/easonwumac/Helm" class="btn btn--primary">Get Started</a>
+            <a href="#setup" class="btn btn--secondary t-en">Quick Install</a>
+            <a href="#setup" class="btn btn--secondary t-tw">快速安裝</a>
+          </div>
+        </div>
+
+        <div class="hero-visual animate-up-slow">
+          <div class="terminal-mock">
+            <div class="terminal-header">
+              <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+              <span class="terminal-title">helm --status</span>
+            </div>
+            <div class="terminal-body">
+              <div class="line"><span class="cmd">$</span> helm start</div>
+              <div class="line success">✓ Relay server listening on port 8080</div>
+              <div class="line warning">! Waiting for mobile connection...</div>
+              <div class="line info">ℹ Active Session: <span class="session-name">refactor-auth-flow</span></div>
+              <div class="line"><span class="cursor">_</span></div>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section class="features" id="features">
-        <div class="feature">
-          <div class="feature__icon">📡</div>
-          <h3 class="t-en">Live Relay</h3>
-          <h3 class="t-tw">即時轉接</h3>
-          <p class="t-en">Seamlessly relay local Codex events to your mobile devices in real-time.</p>
-          <p class="t-tw">將本機 Codex 事件即時轉接到你的行動裝置。</p>
-        </div>
-        <div class="feature">
-          <div class="feature__icon">📱</div>
-          <h3 class="t-en">Supervision</h3>
-          <h3 class="t-tw">行動監管</h3>
-          <p class="t-en">Review every turn and file change without opening your laptop.</p>
-          <p class="t-tw">無需打開筆電，即可審查每一次交談與檔案變更。</p>
-        </div>
-        <div class="feature">
-          <div class="feature__icon">✅</div>
-          <h3 class="t-en">Remote Approval</h3>
-          <h3 class="t-tw">遠端審批</h3>
-          <p class="t-en">Approve, reject, or steer sessions from anywhere via the iOS client.</p>
-          <p class="t-tw">透過 iOS 客戶端，隨時隨地批准、拒絕或引導開發進程。</p>
+      <section class="features-section" id="features">
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="M12 5l7 7-7 7"/></svg>
+            </div>
+            <h3 class="t-en">Live Relay</h3>
+            <h3 class="t-tw">即時中繼</h3>
+            <p class="t-en">Relay local AI coding events to mobile devices via secure WebSocket tunnels.</p>
+            <p class="t-tw">透過加密的 WebSocket 隧道，將本機 AI 事件即時轉發到行動裝置。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            </div>
+            <h3 class="t-en">Mobile Control</h3>
+            <h3 class="t-tw">行動控制</h3>
+            <p class="t-en">The iPhone client provides a structured view of turns, files, and intents.</p>
+            <p class="t-tw">iPhone 客戶端為對話、檔案變更與 Agent 意圖提供結構化視圖。</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <h3 class="t-en">Remote Approve</h3>
+            <h3 class="t-tw">遠端審批</h3>
+            <p class="t-en">Approve, reject, or steer sessions from anywhere without your laptop.</p>
+            <p class="t-tw">無需打開筆電，即可隨時隨地批准變更或調整 Agent 的開發方向。</p>
+          </div>
         </div>
       </section>
 
-      <section class="usage">
-        <h2 class="t-en">Simple Setup</h2>
-        <h2 class="t-tw">簡單配置</h2>
-        <div class="code-block">
-          <code>$ brew install easonwumac/tap/helm</code>
-          <code>$ helm start</code>
+      <section class="setup-section" id="setup">
+        <h2 class="t-en">Instant Setup</h2>
+        <h2 class="t-tw">立即開始</h2>
+        <div class="setup-box">
+          <code>brew install easonwumac/tap/helm</code>
+          <button class="copy-btn" onclick="copyCode()">Copy</button>
         </div>
-        <p class="t-en">Scan the QR code, pair your device, and you're ready to go.</p>
-        <p class="t-tw">掃描 QR Code，完成裝置配對，即可開始使用。</p>
       </section>
     </main>
 
     <footer class="footer">
       <div class="footer__inner">
-        <p class="t-en">Built with passion for the AI-first era. Licensed under MIT.</p>
-        <p class="t-tw">為 AI 時代而生。採用 MIT 授權。</p>
-        <div class="footer__links">
+        <p class="t-en">© 2026 Helm Console · Built for the next era of AI engineering.</p>
+        <p class="t-tw">© 2026 Helm Console · 為下一代 AI 工程師而生。</p>
+        <div class="footer-links">
           <a href="https://github.com/easonwumac/Helm">GitHub</a>
-          <span>·</span>
-          <a href="https://github.com/easonwumac/Helm/issues">Issues</a>
+          <a href="https://github.com/easonwumac/Helm/blob/main/LICENSE">MIT License</a>
         </div>
       </div>
     </footer>
@@ -98,13 +121,19 @@
     <script>
       function setLang(lang) {
         document.body.className = 'lang-' + lang;
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        document.getElementById('btn-tw').classList.toggle('active', lang === 'tw');
+        document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+        document.getElementById('btn-tw').className = lang === 'tw' ? 'active' : '';
         localStorage.setItem('helm-lang', lang);
       }
       
-      const savedLang = localStorage.getItem('helm-lang');
-      if (savedLang) setLang(savedLang);
+      const savedLang = localStorage.getItem('helm-lang') || 'en';
+      setLang(savedLang);
+
+      function copyCode() {
+        const code = "brew install easonwumac/tap/helm";
+        navigator.clipboard.writeText(code);
+        alert("Copied to clipboard!");
+      }
     </script>
   </body>
 </html>
