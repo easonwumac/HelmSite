@@ -1,208 +1,110 @@
 <!doctype html>
-<html lang="zh-Hant">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Helm 是一個讓你不用守在 terminal 的 AI coding sessions 控制台。"
-    />
+    <meta name="description" content="Helm - Mobile Agent Console for AI Coding Sessions" />
     <title>Helm | Mobile Agent Console</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
-    <div class="background-pattern"></div>
-    <main class="page">
-      <header class="topbar">
-        <div class="brand">
-          <div class="brand__mark" aria-hidden="true">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-8.4 8.4"/><path d="M16.2 16.2 7.8 7.8"/></svg>
-          </div>
-          <div>
-            <p class="brand__title">Helm</p>
-            <p class="brand__subtitle">Mobile agent console</p>
-          </div>
+  <body class="lang-en">
+    <div class="glow"></div>
+    
+    <header class="header">
+      <div class="header__inner">
+        <div class="logo">
+          <span class="logo__icon">⎈</span>
+          <span class="logo__text">HELM</span>
         </div>
-        <nav class="nav" aria-label="Primary">
-          <a href="#why">Why</a>
-          <a href="#how">How</a>
-          <a href="#features">Features</a>
-          <a href="#roadmap">Roadmap</a>
-          <a href="https://github.com/easonwumac/Helm" class="github-btn" target="_blank" rel="noreferrer">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-            <span>GitHub</span>
+        <nav class="header__nav">
+          <div class="lang-switch">
+            <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
+            <span class="sep">/</span>
+            <button onclick="setLang('tw')" id="btn-tw">中</button>
+          </div>
+          <a href="https://github.com/easonwumac/Helm" class="github-link" target="_blank">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.11.81 2.235 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
           </a>
         </nav>
-      </header>
+      </div>
+    </header>
 
-      <section class="hero animate-in">
-        <div class="hero__content">
-          <span class="badge">V1.0.0 Now Available</span>
-          <h1>Don't babysit your AI agent from a <span class="text-gradient">terminal.</span></h1>
-          <p class="lead">
-            Helm 把本機 relay、iPhone supervision 與 approval flow 串起來，讓你不用一直盯著
-            terminal，也能即時掌握 agent 狀態、批准變更與引導開發路徑。
-          </p>
-          <div class="actions">
-            <a class="button button--primary" href="https://github.com/easonwumac/Helm" target="_blank" rel="noreferrer">
-              Get Started
-            </a>
-            <a class="button button--secondary" href="https://github.com/easonwumac/Helm#architecture" target="_blank" rel="noreferrer">
-              View Architecture
-            </a>
-          </div>
-        </div>
-
-        <div class="hero__visual">
-          <div class="visual-card">
-            <div class="visual-card__header">
-              <div class="dot"></div><div class="dot"></div><div class="dot"></div>
-              <span>Terminal Session</span>
-            </div>
-            <div class="visual-card__body">
-              <pre><code><span class="code-gray">$</span> helm start
-<span class="code-green">✓</span> Relay started at port 8080
-<span class="code-yellow">!</span> Waiting for iPhone pairing...
-<span class="code-blue">ℹ</span> Session: refactor-auth-logic</code></pre>
-            </div>
-          </div>
+    <main>
+      <section class="hero">
+        <h1 class="t-en">Coding shouldn't keep you<br><span class="highlight">chained to your desk.</span></h1>
+        <h1 class="t-tw">AI 開發不該把你<br><span class="highlight">鎖在桌子前面。</span></h1>
+        
+        <p class="hero__desc t-en">Helm is a mobile control plane for your AI coding sessions. Monitor progress, approve changes, and steer agents directly from your iPhone.</p>
+        <p class="hero__desc t-tw">Helm 是 AI 編碼階段的行動控制台。直接從 iPhone 監控進度、批准變更並引導 Agent 執行。</p>
+        
+        <div class="hero__actions">
+          <a href="https://github.com/easonwumac/Helm" class="btn btn--primary">Get Started</a>
+          <a href="#features" class="btn btn--text t-en">Learn More ↓</a>
+          <a href="#features" class="btn btn--text t-tw">了解更多 ↓</a>
         </div>
       </section>
 
-      <section class="stats-bar animate-in" style="animation-delay: 0.1s">
-        <div class="stat-item">
-          <strong>1 Scan</strong>
-          <span>Instant Pairing</span>
+      <section class="features" id="features">
+        <div class="feature">
+          <div class="feature__icon">📡</div>
+          <h3 class="t-en">Live Relay</h3>
+          <h3 class="t-tw">即時轉接</h3>
+          <p class="t-en">Seamlessly relay local Codex events to your mobile devices in real-time.</p>
+          <p class="t-tw">將本機 Codex 事件即時轉接到你的行動裝置。</p>
         </div>
-        <div class="divider"></div>
-        <div class="stat-item">
-          <strong>Live</strong>
-          <span>Real-time Events</span>
+        <div class="feature">
+          <div class="feature__icon">📱</div>
+          <h3 class="t-en">Supervision</h3>
+          <h3 class="t-tw">行動監管</h3>
+          <p class="t-en">Review every turn and file change without opening your laptop.</p>
+          <p class="t-tw">無需打開筆電，即可審查每一次交談與檔案變更。</p>
         </div>
-        <div class="divider"></div>
-        <div class="stat-item">
-          <strong>Multi</strong>
-          <span>Device Control</span>
-        </div>
-      </section>
-
-      <section class="section" id="why">
-        <div class="section__header">
-          <span class="eyebrow">The Problem</span>
-          <h2>Solving the waiting game.</h2>
-          <p>Helm isn't just a remote shell; it's a dedicated control plane for AI autonomy.</p>
-        </div>
-
-        <div class="grid grid--three">
-          <article class="feature-card">
-            <div class="feature-card__icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            </div>
-            <h3>不必守在 terminal</h3>
-            <p>Session 狀態與 approval request 直接送到 iPhone，隨時隨地掌控進度。</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-card__icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h10"/><path d="M9 4v16"/><path d="m3 9 3 3-3 3"/><path d="M12 12h10"/><path d="M19 4v16"/><path d="m21 9-3 3 3 3"/></svg>
-            </div>
-            <h3>掌握 Agent 意圖</h3>
-            <p>提供結構化的事件流，讓你一眼看出 Agent 的下一步與潛在風險。</p>
-          </article>
-          <article class="feature-card">
-            <div class="feature-card__icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M3 9h18"/><path d="M9 21V9"/></svg>
-            </div>
-            <h3>多 Session 併行</h3>
-            <p>即使同時處理多個專案，也能透過統一的介面進行監督與管理。</p>
-          </article>
+        <div class="feature">
+          <div class="feature__icon">✅</div>
+          <h3 class="t-en">Remote Approval</h3>
+          <h3 class="t-tw">遠端審批</h3>
+          <p class="t-en">Approve, reject, or steer sessions from anywhere via the iOS client.</p>
+          <p class="t-tw">透過 iOS 客戶端，隨時隨地批准、拒絕或引導開發進程。</p>
         </div>
       </section>
 
-      <section class="section section--dark" id="how">
-        <div class="section__header">
-          <span class="eyebrow">Workflow</span>
-          <h2>A seamless integration.</h2>
+      <section class="usage">
+        <h2 class="t-en">Simple Setup</h2>
+        <h2 class="t-tw">簡單配置</h2>
+        <div class="code-block">
+          <code>$ brew install easonwumac/tap/helm</code>
+          <code>$ helm start</code>
         </div>
-
-        <div class="steps-grid">
-          <div class="step-item">
-            <div class="step-num">01</div>
-            <h3>啟動 Relay</h3>
-            <p>macOS menu bar shell 接住本機 Codex 流量，整理成視覺化事件。</p>
-          </div>
-          <div class="step-item">
-            <div class="step-num">02</div>
-            <h3>掃碼配對</h3>
-            <p>一次 QR pairing 後，手機即可接收即時狀態更新與推播通知。</p>
-          </div>
-          <div class="step-item">
-            <div class="step-num">03</div>
-            <h3>遠端審批</h3>
-            <p>在手機上批准、拒絕或調整 session，將控制權握在手中。</p>
-          </div>
-        </div>
+        <p class="t-en">Scan the QR code, pair your device, and you're ready to go.</p>
+        <p class="t-tw">掃描 QR Code，完成裝置配對，即可開始使用。</p>
       </section>
-
-      <section class="section" id="features">
-        <div class="section__header">
-          <span class="eyebrow">Capabilities</span>
-          <h2>Core supervision loop.</h2>
-        </div>
-
-        <div class="features-layout">
-          <div class="feature-list-modern">
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>即時 WebSocket Relay</span>
-            </div>
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>iPhone 端 Live Session Feed</span>
-            </div>
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Approval Workflow 與 Turn Steering</span>
-            </div>
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>QR Code Pairing + Device Token</span>
-            </div>
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>SQLite Event History</span>
-            </div>
-            <div class="list-item">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-amber"><polyline points="20 6 9 17 4 12"/></svg>
-              <span>Local Only / Tailnet 雙模式</span>
-            </div>
-          </div>
-
-          <div class="note-card">
-            <div class="note-card__icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
-            </div>
-            <p class="eyebrow">Maintenance Note</p>
-            <p>此版本採用純靜態架構，完美支援 GitHub Pages，讓維護文案與更新風格變得輕而易舉。</p>
-          </div>
-        </div>
-      </section>
-
-      <footer class="footer">
-        <div class="footer__content">
-          <div class="footer__brand">
-            <div class="brand__mark brand__mark--small">⎈</div>
-            <span>Helm Console</span>
-          </div>
-          <p>© 2026 Built for the modern developer.</p>
-          <div class="footer__links">
-            <a href="https://github.com/easonwumac/Helm" target="_blank" rel="noreferrer">GitHub</a>
-            <a href="https://github.com/easonwumac/Helm/blob/main/LICENSE" target="_blank" rel="noreferrer">License</a>
-          </div>
-        </div>
-      </footer>
     </main>
+
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="t-en">Built with passion for the AI-first era. Licensed under MIT.</p>
+        <p class="t-tw">為 AI 時代而生。採用 MIT 授權。</p>
+        <div class="footer__links">
+          <a href="https://github.com/easonwumac/Helm">GitHub</a>
+          <span>·</span>
+          <a href="https://github.com/easonwumac/Helm/issues">Issues</a>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function setLang(lang) {
+        document.body.className = 'lang-' + lang;
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('btn-tw').classList.toggle('active', lang === 'tw');
+        localStorage.setItem('helm-lang', lang);
+      }
+      
+      const savedLang = localStorage.getItem('helm-lang');
+      if (savedLang) setLang(savedLang);
+    </script>
   </body>
 </html>
