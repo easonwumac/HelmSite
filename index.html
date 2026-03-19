@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Helm 是一個讓你不用守在 terminal 的 AI coding sessions 控制台。"
+    />
+    <title>Helm | Mobile Agent Console</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero">
+        <header class="topbar">
+          <div class="brand">
+            <div class="brand__mark" aria-hidden="true">⎈</div>
+            <div>
+              <p class="eyebrow">Helm</p>
+              <p class="brand__subtitle">Mobile agent console for AI coding sessions</p>
+            </div>
+          </div>
+          <nav class="nav" aria-label="Primary">
+            <a href="#why">Why</a>
+            <a href="#how">How</a>
+            <a href="#features">Features</a>
+            <a href="#roadmap">Roadmap</a>
+          </nav>
+        </header>
+
+        <div class="hero__grid">
+          <div class="hero__copy">
+            <p class="eyebrow">Static product site</p>
+            <h1>Helm keeps Codex sessions moving when you are away from the terminal.</h1>
+            <p class="lead">
+              Helm 把本機 relay、iPhone supervision 與 approval flow 串起來，讓你不用一直盯著
+              terminal，也能知道 agent 正在做什麼、卡在哪裡、需不需要你接手。
+            </p>
+
+            <div class="actions">
+              <a class="button button--primary" href="https://github.com/easonwumac/Helm" target="_blank" rel="noreferrer">
+                View Helm
+              </a>
+              <a class="button button--secondary" href="https://github.com/easonwumac/Helm#architecture" target="_blank" rel="noreferrer">
+                Read architecture
+              </a>
+            </div>
+
+            <dl class="stats" aria-label="Product highlights">
+              <div>
+                <dt>1 scan</dt>
+                <dd>完成 Mac 與 iPhone 配對</dd>
+              </div>
+              <div>
+                <dt>Live</dt>
+                <dd>即時事件、批准與通知</dd>
+              </div>
+              <div>
+                <dt>Multi-device</dt>
+                <dd>可管理多個裝置與 revoke</dd>
+              </div>
+            </dl>
+          </div>
+
+          <aside class="hero__panel" aria-label="Product summary">
+            <div class="panel-card">
+              <p class="eyebrow">Product summary</p>
+              <h2>You should not have to babysit your AI agent from a terminal.</h2>
+              <p>
+                Helm 不是另一個 remote shell，而是把 AI coding session 的狀態整理成你可以快速判斷、
+                快速介入的控制面板。
+              </p>
+            </div>
+
+            <div class="mini-grid">
+              <article>
+                <span>Desktop</span>
+                <strong>macOS menu bar shell</strong>
+                <p>負責啟動與配置本機 relay。</p>
+              </article>
+              <article>
+                <span>Relay</span>
+                <strong>Rust control plane</strong>
+                <p>處理 state、persistence、auth、WSS。</p>
+              </article>
+              <article>
+                <span>Mobile</span>
+                <strong>iPhone client</strong>
+                <p>即時看 session、approve、steer。</p>
+              </article>
+              <article>
+                <span>Scope</span>
+                <strong>Codex-first</strong>
+                <p>以 structured agent events 為核心。</p>
+              </article>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="why">
+        <div class="section__heading">
+          <p class="eyebrow">Why Helm exists</p>
+          <h2>It solves the waiting problem, not just remote access.</h2>
+        </div>
+
+        <div class="grid grid--three">
+          <article class="card">
+            <h3>不必守在 terminal</h3>
+            <p>session 的狀態、等待點與 approval request 直接送到 iPhone。</p>
+          </article>
+          <article class="card">
+            <h3>看的是 agent intent</h3>
+            <p>不是只看 raw log，而是 turn、檔案變更與即將執行的命令。</p>
+          </article>
+          <article class="card">
+            <h3>支援多 session</h3>
+            <p>同時跑多個倉庫時，仍能用一致的視角追蹤風險與進度。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="how">
+        <div class="section__heading">
+          <p class="eyebrow">How it works</p>
+          <h2>A compact flow that keeps the Mac as the source of truth.</h2>
+        </div>
+
+        <div class="grid grid--three">
+          <article class="card card--step">
+            <p class="step">01</p>
+            <h3>啟動 relay</h3>
+            <p>macOS menu bar shell 接住本機 Codex 流量，整理成可視化事件。</p>
+          </article>
+          <article class="card card--step">
+            <p class="step">02</p>
+            <h3>掃碼配對</h3>
+            <p>一次 QR pairing 後，手機即可接收狀態更新與通知。</p>
+          </article>
+          <article class="card card--step">
+            <p class="step">03</p>
+            <h3>遠端審批與 steer</h3>
+            <p>在手機上批准、拒絕或調整 session，不必回到桌面前。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="features">
+        <div class="section__heading">
+          <p class="eyebrow">Current scope</p>
+          <h2>The first version already covers the core supervision loop.</h2>
+        </div>
+
+        <div class="features">
+          <ul class="feature-list">
+            <li>即時 WebSocket relay</li>
+            <li>iPhone 端 live session feed</li>
+            <li>approval workflow 與 turn steering</li>
+            <li>QR code pairing + device token</li>
+            <li>SQLite event history</li>
+            <li>多裝置與 revocation</li>
+            <li>Local Only / Tailnet 雙模式</li>
+            <li>session forking</li>
+          </ul>
+
+          <div class="callout">
+            <p class="eyebrow">Maintenance note</p>
+            <p>
+              這個版本刻意保持純靜態，方便直接放到 GitHub Pages。後面不管是 Gemini 或你自己維護，
+              都不需要先處理 build pipeline 才能改文案。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="roadmap">
+        <div class="section__heading">
+          <p class="eyebrow">Roadmap</p>
+          <h2>Ship the foundation first, then harden the control plane.</h2>
+        </div>
+
+        <div class="grid grid--two">
+          <article class="card">
+            <span class="tag tag--now">Now</span>
+            <ul class="plain-list">
+              <li>Real-time WebSocket relay</li>
+              <li>iOS client for live supervision</li>
+              <li>QR-code pairing and persistent tokens</li>
+              <li>Full event history and replay</li>
+            </ul>
+          </article>
+          <article class="card">
+            <span class="tag tag--next">Next</span>
+            <ul class="plain-list">
+              <li>Transport-grade TLS for hostd</li>
+              <li>APNs push delivery</li>
+              <li>Pattern-based auto-allow rules</li>
+              <li>Archive and search for past sessions</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <p>Built for macOS and iOS, with a relay architecture that keeps the Mac authoritative.</p>
+        <a href="https://github.com/easonwumac/Helm" target="_blank" rel="noreferrer">github.com/easonwumac/Helm</a>
+      </footer>
+    </main>
+  </body>
+</html>
