@@ -1,144 +1,191 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Helm - The Mobile Control Plane for AI Coding Sessions" />
-    <title>Helm | Mobile Agent Console</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helm | Control Your AI Agents Anywhere</title>
+    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="./styles.css" />
-  </head>
-  <body class="lang-en">
-    <!-- Visual Decor -->
-    <div class="background-grid"></div>
-    <div class="glow glow-1"></div>
-    <div class="glow glow-2"></div>
-    
-    <header class="top-nav">
-      <div class="container nav-inner">
-        <div class="logo">
-          <span class="logo-icon">⎈</span>
-          <span class="logo-text">HELM</span>
-        </div>
-        <div class="nav-actions">
-          <div class="i18n-toggle">
-            <button onclick="setLang('en')" id="btn-en" class="active">EN</button>
-            <button onclick="setLang('tw')" id="btn-tw">中</button>
-          </div>
-          <a href="https://github.com/easonwumac/Helm" class="gh-button" target="_blank">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.11.81 2.235 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
-            <span>GitHub</span>
-          </a>
-        </div>
-      </div>
-    </header>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #09090b; }
+        .glow-amber { box-shadow: 0 0 50px -12px rgba(245, 158, 11, 0.3); }
+        .glass { background: rgba(24, 24, 27, 0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        @keyframes fade-in-up {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-hero { animation: fade-in-up 0.8s ease-out forwards; }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
 
-    <main>
-      <section class="hero-section">
-        <div class="container hero-inner">
-          <div class="hero-logo-banner animate-fade-in">⎈</div>
-          <h1 class="t-en">Coding shouldn't keep you<br><span class="accent">chained to your desk.</span></h1>
-          <h1 class="t-tw">AI 開發不該把你<br><span class="accent">鎖在電腦前面。</span></h1>
-          
-          <p class="hero-desc t-en">The mobile control plane for AI coding sessions. Monitor, approve, and steer your agents directly from your iPhone.</p>
-          <p class="hero-desc t-tw">AI 開發階段的行動控制台。直接從 iPhone 監控進度、批准變更，並引導 Agent 執行下一步。</p>
-          
-          <div class="hero-cta">
-            <a href="https://github.com/easonwumac/Helm" class="btn btn-primary">Get Started</a>
-            <a href="#features" class="btn btn-secondary t-en">View Features</a>
-            <a href="#features" class="btn btn-secondary t-tw">功能介紹</a>
-          </div>
-        </div>
+    <script type="text/babel">
+        const { useState, useEffect } = React;
 
-        <div class="hero-mockup animate-slide-up">
-          <div class="mockup-frame">
-            <div class="mockup-header">
-              <div class="mockup-dots"><span></span><span></span><span></span></div>
-              <div class="mockup-tab">helm-relay</div>
-            </div>
-            <div class="mockup-body">
-              <div class="code-line"><span class="c-dim">$</span> brew install helm</div>
-              <div class="code-line"><span class="c-dim">$</span> helm start</div>
-              <div class="code-line c-green">✓ Relay active on port 8080</div>
-              <div class="code-line c-yellow">! Awaiting iPhone supervision...</div>
-              <div class="code-line c-blue">ℹ Active session: <span class="c-bold">refactor-auth-logic</span></div>
-              <div class="code-line"><span class="cursor">_</span></div>
-            </div>
-          </div>
-        </div>
-      </section>
+        const App = () => {
+            const [lang, setLang] = useState('en');
 
-      <section class="features-section" id="features">
-        <div class="container">
-          <div class="section-title">
-            <h2 class="t-en">Product Scope</h2>
-            <h2 class="t-tw">核心功能</h2>
-          </div>
-          <div class="features-grid">
-            <div class="feature-card">
-              <div class="feature-icon">📡</div>
-              <h3 class="t-en">Real-time Relay</h3>
-              <h3 class="t-tw">即時中繼</h3>
-              <p class="t-en">Seamlessly relay local agent events to mobile via WebSocket.</p>
-              <p class="t-tw">透過 WebSocket 將本機 Agent 事件即時同步至行動裝置。</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">📱</div>
-              <h3 class="t-en">Live Supervision</h3>
-              <h3 class="t-tw">行動監管</h3>
-              <p class="t-en">Review every turn and file change on the go.</p>
-              <p class="t-tw">隨時隨地審查每一次對話輪次與檔案變更。</p>
-            </div>
-            <div class="feature-card">
-              <div class="feature-icon">✅</div>
-              <h3 class="t-en">Remote Approval</h3>
-              <h3 class="t-tw">遠端審核</h3>
-              <p class="t-en">Approve or steer sessions without your terminal.</p>
-              <p class="t-tw">無需打開終端機，即可遠端批准或引導開發進程。</p>
-            </div>
-          </div>
-        </div>
-      </section>
+            const content = {
+                en: {
+                    hero: { title: "Control Your AI Agents", accent: "Anywhere", sub: "Helm connects your mobile device to running Codex sessions — monitor, control, and interact in real-time.", start: "Get Started", gh: "View on GitHub" },
+                    features: {
+                        title: "Core Capabilities",
+                        items: [
+                            { icon: "globe", title: "Cross-platform Access", desc: "Connect from iOS, Android, or any web browser seamlessly." },
+                            { icon: "zap", title: "Real-time Control", desc: "Instant WebSocket relay with sub-100ms latency for agent turns." },
+                            { icon: "smartphone", title: "Mobile-first Interaction", desc: "Designed for supervision on the go. Approve changes with a tap." },
+                            { icon: "shield-check", title: "Secure Remote Connection", desc: "End-to-end encrypted tunnels via SQLite-backed relay servers." }
+                        ]
+                    },
+                    why: { title: "Not Just Chat", desc: "Helm is a dedicated control plane. It understands agent intents, file changes, and structured autonomous sessions." }
+                },
+                tw: {
+                    hero: { title: "隨時隨地掌控您的", accent: "AI Agent", sub: "Helm 將您的行動裝置與正在運行的 Codex 會話連接 — 即時監控、控制與互動。", start: "立即開始", gh: "在 GitHub 查看" },
+                    features: {
+                        title: "核心功能",
+                        items: [
+                            { icon: "globe", title: "跨平台存取", desc: "從 iOS、Android 或任何瀏覽器無縫連接。" },
+                            { icon: "zap", title: "即時控制", desc: "極低延遲的 WebSocket 中繼，即時同步 Agent 回合。" },
+                            { icon: "smartphone", title: "行動優先互動", desc: "專為隨時隨地的監管設計，一鍵批准變更。" },
+                            { icon: "shield-check", title: "安全遠端連接", desc: "透過加密隧道進行安全連接，確保數據隱私。" }
+                        ]
+                    },
+                    why: { title: "不只是另一個聊天視窗", desc: "Helm 是專用的控制平面。它能理解 Agent 意圖、檔案變更以及自主會話的結構化特性。" }
+                }
+            };
 
-      <section class="setup-section">
-        <div class="container">
-          <div class="setup-card">
-            <h2 class="t-en">Quick Install</h2>
-            <h2 class="t-tw">快速安裝</h2>
-            <div class="install-bar">
-              <code>brew install easonwumac/tap/helm</code>
-            </div>
-          </div>
-        </div>
-      </section>
-    </main>
+            const t = content[lang];
 
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-brand">
-          <span class="logo-icon">⎈</span>
-          <span>HELM CONSOLE</span>
-        </div>
-        <p class="t-en">© 2026 Built for modern AI engineering. MIT Licensed.</p>
-        <p class="t-tw">© 2026 為現代 AI 工程而生。採用 MIT 授權。</p>
-        <div class="footer-links">
-          <a href="https://github.com/easonwumac/Helm">GitHub</a>
-          <a href="https://github.com/easonwumac/Helm/issues">Issues</a>
-        </div>
-      </div>
-    </footer>
+            useEffect(() => {
+                lucide.createIcons();
+            }, [lang]);
 
-    <script>
-      function setLang(lang) {
-        document.body.className = 'lang-' + lang;
-        document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
-        document.getElementById('btn-tw').className = lang === 'tw' ? 'active' : '';
-        localStorage.setItem('helm-lang', lang);
-      }
-      const savedLang = localStorage.getItem('helm-lang') || 'en';
-      setLang(savedLang);
+            return (
+                <div className="text-zinc-100 min-h-screen">
+                    {/* Background Decor */}
+                    <div className="fixed inset-0 pointer-events-none overflow-hidden">
+                        <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-amber-600/10 rounded-full blur-[120px]" />
+                        <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-orange-600/5 rounded-full blur-[120px]" />
+                    </div>
+
+                    {/* Navbar */}
+                    <nav className="sticky top-0 z-50 glass border-b border-white/5">
+                        <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+                            <div className="flex items-center gap-2">
+                                <div className="w-8 h-8 bg-amber-500 rounded-lg flex items-center justify-center font-black text-black">⎈</div>
+                                <span className="font-bold text-xl tracking-tight">Helm</span>
+                            </div>
+                            <div className="flex items-center gap-6">
+                                <button onClick={() => setLang(lang === 'en' ? 'tw' : 'en')} className="text-sm font-semibold text-zinc-400 hover:text-white transition-colors">
+                                    {lang === 'en' ? '中文' : 'EN'}
+                                </button>
+                                <a href="https://github.com/easonwumac/Helm" target="_blank" className="flex items-center gap-2 px-4 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-full text-sm font-bold transition-all">
+                                    <i data-lucide="github" className="w-4 h-4"></i>
+                                    <span>GitHub</span>
+                                </a>
+                            </div>
+                        </div>
+                    </nav>
+
+                    {/* Hero */}
+                    <section className="relative pt-24 pb-20 px-6 text-center animate-hero">
+                        <div className="max-w-4xl mx-auto">
+                            <div className="inline-block px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-500 text-xs font-bold mb-8">
+                                V1.0.0 Now Available
+                            </div>
+                            <h1 className="text-5xl md:text-7xl font-extrabold tracking-tight mb-8">
+                                {t.hero.title} <br/>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
+                                    {t.hero.accent}
+                                </span>
+                            </h1>
+                            <p className="text-zinc-400 text-lg md:text-xl max-w-2xl mx-auto mb-12 leading-relaxed">
+                                {t.hero.sub}
+                            </p>
+                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+                                <a href="#" className="w-full sm:w-auto px-8 py-4 bg-amber-500 text-black rounded-xl font-bold text-lg glow-amber hover:scale-105 transition-all">
+                                    {t.hero.start}
+                                </a>
+                                <a href="https://github.com/easonwumac/Helm" className="w-full sm:w-auto px-8 py-4 glass rounded-xl font-bold text-lg hover:bg-white/5 transition-all flex items-center justify-center gap-2">
+                                    <i data-lucide="github" className="w-5 h-5"></i>
+                                    {t.hero.gh}
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Visual */}
+                    <section className="px-6 py-12">
+                        <div className="max-w-5xl mx-auto glass rounded-3xl p-8 md:p-12 overflow-hidden relative">
+                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-amber-500/50 to-transparent" />
+                            <div className="flex flex-col md:flex-row items-center justify-between gap-12 text-center">
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="p-5 bg-zinc-800 rounded-2xl border border-white/5"><i data-lucide="smartphone" className="w-10 h-10 text-amber-500"></i></div>
+                                    <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">iPhone Client</span>
+                                </div>
+                                <div className="hidden md:block flex-1 border-t border-dashed border-zinc-800" />
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="p-8 bg-amber-500 rounded-full glow-amber animate-pulse"><span className="text-black text-4xl font-black">⎈</span></div>
+                                    <span className="text-xs font-bold text-amber-500 uppercase tracking-widest">Helm Relay</span>
+                                </div>
+                                <div className="hidden md:block flex-1 border-t border-dashed border-zinc-800" />
+                                <div className="flex flex-col items-center gap-4">
+                                    <div className="p-5 bg-zinc-800 rounded-2xl border border-white/5"><i data-lucide="monitor" className="w-10 h-10 text-blue-400"></i></div>
+                                    <span className="text-xs font-bold text-zinc-500 uppercase tracking-widest">Codex Server</span>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Features */}
+                    <section className="max-w-6xl mx-auto px-6 py-24">
+                        <h2 className="text-3xl font-bold text-center mb-16">{t.features.title}</h2>
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                            {t.features.items.map((f, i) => (
+                                <div key={i} className="glass p-8 rounded-2xl group hover:border-amber-500/30 transition-all">
+                                    <div className="w-12 h-12 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-500 mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide={f.icon}></i>
+                                    </div>
+                                    <h3 className="text-xl font-bold mb-3">{f.title}</h3>
+                                    <p className="text-zinc-500 text-sm leading-relaxed">{f.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Why */}
+                    <section className="bg-zinc-950/50 py-24 px-6 border-y border-white/5">
+                        <div className="max-w-3xl mx-auto text-center">
+                            <h2 className="text-4xl md:text-5xl font-black mb-8 italic tracking-tighter">{t.why.title}</h2>
+                            <p className="text-zinc-400 text-lg md:text-xl leading-relaxed">{t.why.desc}</p>
+                        </div>
+                    </section>
+
+                    {/* Footer */}
+                    <footer className="max-w-6xl mx-auto px-6 py-16 flex flex-col md:flex-row justify-between items-center gap-8">
+                        <div className="flex flex-col items-center md:items-start gap-4">
+                            <div className="flex items-center gap-2">
+                                <div className="w-6 h-6 bg-zinc-800 rounded flex items-center justify-center text-white">⎈</div>
+                                <span className="font-bold">Helm</span>
+                            </div>
+                            <p className="text-xs text-zinc-600">© 2026 Helm Console. MIT License.</p>
+                        </div>
+                        <div className="flex gap-6 text-zinc-500 hover:text-white transition-colors">
+                            <a href="https://github.com/easonwumac/Helm" target="_blank"><i data-lucide="github"></i></a>
+                            <a href="#"><i data-lucide="external-link"></i></a>
+                        </div>
+                    </footer>
+                </div>
+            );
+        };
+
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<App />);
     </script>
-  </body>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</body>
 </html>
