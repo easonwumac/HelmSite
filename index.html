@@ -195,33 +195,150 @@
         <section class="features" id="features">
             <div class="f-card">
                 <div class="f-icon">📡</div>
-                <h3 class="t-en">Live Relay</h3>
-                <h3 class="t-tw">即時中繼</h3>
-                <p class="t-en">Relay local Codex events to mobile devices via secure tunnels.</p>
-                <p class="t-tw">透過加密隧道將本機 Codex 事件即時同步至行動裝置。</p>
-            </div>
-            <div class="f-card">
-                <div class="f-icon">📱</div>
-                <h3 class="t-en">Supervision</h3>
-                <h3 class="t-tw">行動監管</h3>
-                <p class="t-en">Review turns and file changes without opening your laptop.</p>
-                <p class="t-tw">無需打開筆電，即可審查對話輪次與檔案變更。</p>
+                <h3 class="t-en">Live Session Feed</h3>
+                <h3 class="t-tw">即時指令流</h3>
+                <p class="t-en">See exactly what every agent is doing, in real time.</p>
+                <p class="t-tw">即時查看每個 Agent 正在執行的所有動作與指令。</p>
             </div>
             <div class="f-card">
                 <div class="f-icon">✅</div>
-                <h3 class="t-en">Remote Approval</h3>
+                <h3 class="t-en">Remote Approvals</h3>
                 <h3 class="t-tw">遠端審核</h3>
-                <p class="t-en">Approve or steer sessions directly from the iOS client.</p>
-                <p class="t-tw">透過 iOS 客戶端，直接批准變更或引導開發進程。</p>
+                <p class="t-en">Approve or decline changes from your phone — anywhere.</p>
+                <p class="t-tw">隨時隨地透過手機批准或拒絕 Agent 的變更。</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">🔔</div>
+                <h3 class="t-en">Push Notifications</h3>
+                <h3 class="t-tw">推播通知</h3>
+                <p class="t-en">Get notified the moment your agent needs attention.</p>
+                <p class="t-tw">當 Agent 需要協助或審核時，立即收到推播通知。</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">🎯</div>
+                <h3 class="t-en">Turn Steering</h3>
+                <h3 class="t-tw">指令引導</h3>
+                <p class="t-en">Send prompts, fork sessions, or interrupt mid-run.</p>
+                <p class="t-tw">傳送提示、分支 Session 或在執行過程中隨時中斷。</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">📱</div>
+                <h3 class="t-en">QR Pairing</h3>
+                <h3 class="t-tw">QR 配對連線</h3>
+                <p class="t-en">One scan to connect. Multi-device with per-device revoke.</p>
+                <p class="t-tw">一鍵掃描即可連線，支援多裝置並可個別撤銷權限。</p>
+            </div>
+            <div class="f-card">
+                <div class="f-icon">🔒</div>
+                <h3 class="t-en">Tailscale Ready</h3>
+                <h3 class="t-tw">Tailscale 支援</h3>
+                <p class="t-en">Access your relay securely from anywhere, no port forwarding.</p>
+                <p class="t-tw">安全地從任何地方存取您的中繼站，無需設定 Port Forwarding。</p>
             </div>
         </section>
 
         <section class="install">
-            <h2 style="margin-bottom:32px" class="t-en">Quick Install</h2>
-            <h2 style="margin-bottom:32px" class="t-tw">快速安裝</h2>
-            <div class="install-box">
-                brew install easonwumac/tap/helm
+            <h2 style="margin-bottom:32px" class="t-en">Install Host Relay</h2>
+            <h2 style="margin-bottom:32px" class="t-tw">安裝中繼端 (Host)</h2>
+            
+            <style>
+                .install-tabs {
+                    display: flex; justify-content: center; gap: 8px; margin-bottom: 24px;
+                }
+                .tab-btn {
+                    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--border);
+                    color: var(--muted); padding: 8px 16px; border-radius: 8px;
+                    font-size: 14px; font-weight: 600; cursor: pointer; transition: all 0.2s;
+                    font-family: inherit;
+                }
+                .tab-btn:hover {
+                    background: rgba(255, 255, 255, 0.1); color: var(--fg);
+                }
+                .tab-btn.active {
+                    background: var(--accent); color: #000; border-color: var(--accent);
+                }
+                .tab-content {
+                    display: none; animation: fadeIn 0.3s ease;
+                }
+                .tab-content.active {
+                    display: block;
+                }
+                .install-wrapper {
+                    background: #111; border: 1px solid var(--border); border-radius: 16px; padding: 24px; max-width: 600px; margin: 0 auto;
+                }
+            </style>
+
+            <div class="install-wrapper">
+                <div class="install-tabs">
+                    <button class="tab-btn active" onclick="switchInstallTab('macos')" id="tab-macos">macOS</button>
+                    <button class="tab-btn" onclick="switchInstallTab('windows')" id="tab-windows">Windows</button>
+                    <button class="tab-btn" onclick="switchInstallTab('source')" id="tab-source">Source</button>
+                </div>
+                
+                <div id="content-macos" class="tab-content active">
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-en">Homebrew (Apple Silicon / Intel)</div>
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-tw">macOS 適用的 Homebrew</div>
+                    <div class="install-box" style="text-align: left; background: #000; width: 100%; box-sizing: border-box; font-size: 16px;">
+                        brew install easonwumac/tap/helm
+                    </div>
+                </div>
+                
+                <div id="content-windows" class="tab-content">
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-en">Windows (Scoop)</div>
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-tw">Windows 適用的 Scoop</div>
+                    <div class="install-box" style="text-align: left; line-height: 1.8; background: #000; width: 100%; box-sizing: border-box; font-size: 16px;">
+                        scoop bucket add easonwumac https://github.com/easonwumac/scoop-bucket<br>
+                        scoop install helm
+                    </div>
+                </div>
+
+                <div id="content-source" class="tab-content">
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-en">Build from Source (Node 22+, Rust)</div>
+                    <div style="color: var(--muted); margin-bottom: 12px; font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;" class="t-tw">從原始碼編譯 (需 Node 22+, Rust)</div>
+                    <div class="install-box" style="text-align: left; line-height: 1.8; background: #000; width: 100%; box-sizing: border-box; font-size: 16px;">
+                        git clone https://github.com/easonwumac/Helm.git<br>
+                        cd Helm && npm install<br>
+                        cargo run -p hostd
+                    </div>
+                </div>
             </div>
+            
+            <div style="display: flex; flex-direction: column; align-items: center; margin-top: 24px;">
+                <p style="color: var(--muted); font-size: 14px;">
+                    <span class="t-en">For iOS App, please build from source via Xcode or contact for TestFlight access.</span>
+                    <span class="t-tw">iOS App 目前需透過 Xcode 本機編譯，或聯繫取得 TestFlight 測試資格。</span>
+                </p>
+                <a href="https://github.com/easonwumac/Helm#%EF%B8%8F-quick-start" class="gh-link" style="margin-top: 8px; text-decoration: underline;">
+                    <span class="t-en">View source build instructions</span>
+                    <span class="t-tw">查看完整的原始碼編譯教學</span>
+                </a>
+            </div>
+
+            <script>
+                function switchInstallTab(platform) {
+                    ['macos', 'windows', 'source'].forEach(p => {
+                        const tabBtn = document.getElementById('tab-' + p);
+                        const contentDiv = document.getElementById('content-' + p);
+                        if(tabBtn && contentDiv) {
+                            tabBtn.classList.remove('active');
+                            contentDiv.classList.remove('active');
+                        }
+                    });
+                    document.getElementById('tab-' + platform).classList.add('active');
+                    document.getElementById('content-' + platform).classList.add('active');
+                }
+
+                document.addEventListener('DOMContentLoaded', () => {
+                    const ua = navigator.userAgent.toLowerCase();
+                    if (ua.indexOf('win') > -1) {
+                        switchInstallTab('windows');
+                    } else if (ua.indexOf('mac') > -1) {
+                        switchInstallTab('macos');
+                    } else if (ua.indexOf('linux') > -1) {
+                        switchInstallTab('source');
+                    }
+                });
+            </script>
         </section>
     </main>
 
